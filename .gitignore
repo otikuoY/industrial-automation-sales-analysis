@@ -1,0 +1,20 @@
+# Confidential company data
+data/raw/
+data/clean/
+reference/
+private_output/
+
+# Private notebooks containing real names and financial values
+notebooks/01_data_cleaning_and_exploration.ipynb
+notebooks/02_sales_performance_analysis.ipynb
+
+# Internal file formats
+*.xls
+*.xlsx
+*.sql
+
+# Temporary files
+.ipynb_checkpoints/
+__pycache__/
+.DS_Store
+Thumbs.db
