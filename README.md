@@ -560,65 +560,36 @@ Public materials use:
 
 \## Project Structure
 
-
-
 ```text
-
 industrial-automation-sales-analysis
-
 ├── README.md
-
 ├── data
-
-│   ├── raw
-
-│   └── clean
-
+│   └── public
+│       ├── business_division_order_share.csv
+│       ├── company_performance_indices.csv
+│       ├── customer_concentration.csv
+│       ├── employee_large_order_concentration.csv
+│       ├── employee_order_share.csv
+│       └── monthly_order_distribution.csv
 ├── notebooks
-
-│   ├── 01\_data\_cleaning\_and\_exploration.ipynb
-
-│   └── 02\_sales\_performance\_analysis.ipynb
-
+│   └── 03_public_analysis.ipynb
 ├── charts
-
-│   ├── employee\_order\_share.png
-
-│   ├── annual\_company\_order\_index.png
-
-│   ├── annual\_company\_order\_count\_index.png
-
-│   ├── annual\_average\_order\_value\_index.png
-
-│   ├── company\_order\_performance\_indices.png
-
-│   ├── employee\_order\_frequency\_vs\_value\_index.png
-
-│   ├── employee\_large\_order\_concentration.png
-
-│   ├── monthly\_order\_value\_distribution.png
-
-│   ├── top\_customer\_order\_share.png
-
-│   ├── customer\_concentration\_trend.png
-
-│   └── business\_division\_order\_share.png
-
-├── report
-
-│   ├── project\_plan.txt
-
-│   └── final\_report.md
-
-├── reference
-
-└── private\_output
-
+│   ├── annual_average_order_value_index.png
+│   ├── annual_company_order_count_index.png
+│   ├── annual_company_order_index.png
+│   ├── business_division_order_share.png
+│   ├── company_order_performance_indices.png
+│   ├── customer_concentration_trend.png
+│   ├── employee_large_order_concentration.png
+│   ├── employee_order_frequency_vs_value_index.png
+│   ├── employee_order_share.png
+│   ├── monthly_order_value_distribution.png
+│   └── top_customer_order_share.png
+└── report
+    └── final_report.md
 ```
 
-
-
-The `data/raw`, `data/clean`, `reference`, and `private\_output` folders contain confidential internal materials and are not intended for public release.
+Confidential source data, internal analysis notebooks, SQL files, and Excel dashboards are excluded from this public repository.
 
 
 
