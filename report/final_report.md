@@ -1,8 +1,8 @@
-\# Sales Performance Analysis for an Industrial Automation Company
+# Sales Performance Analysis for an Industrial Automation Company
 
 
 
-\## Background
+## Background
 
 
 
@@ -18,25 +18,25 @@ To protect confidential company information, employee, customer, and business-di
 
 
 
-\## Research Questions
+## Research Questions
 
 
 
-1\. How did company order performance change across years?
+1. How did company order performance change across years?
 
-2\. How did employees differ in total order value, order count, and average order value?
+2. How did employees differ in total order value, order count, and average order value?
 
-3\. Were employee results spread across many orders or concentrated in a few large orders?
+3. Were employee results spread across many orders or concentrated in a few large orders?
 
-4\. How concentrated was the company’s order value among major customers?
+4. How concentrated was the company’s order value among major customers?
 
-5\. Did monthly order patterns show a consistent seasonal pattern?
+5. Did monthly order patterns show a consistent seasonal pattern?
 
-6\. How did the first half of 2026 compare with the same period in 2024 and 2025?
+6. How did the first half of 2026 compare with the same period in 2024 and 2025?
 
 
 
-\## Data
+## Data
 
 
 
@@ -48,35 +48,35 @@ The main variables used in the analysis were:
 
 
 
-\- Order date
+- Order date
 
-\- Order number
+- Order number
 
-\- Employee
+- Employee
 
-\- Customer
+- Customer
 
-\- Product
+- Product
 
-\- Product specification
+- Product specification
 
-\- Quantity
+- Quantity
 
-\- Order amount
+- Order amount
 
-\- Sales type
+- Sales type
 
-\- Business division
+- Business division
 
-\- Expected delivery date
+- Expected delivery date
 
-\- Completed delivery date
+- Completed delivery date
 
-\- Record status
+- Record status
 
 
 
-\## Data Cleaning
+## Data Cleaning
 
 
 
@@ -92,13 +92,13 @@ Records were included only when:
 
 
 
-\- `record\_status` was 0
+- `record_status` was 0
 
-\- `order\_amount` was greater than 0
+- `order_amount` was greater than 0
 
-\- `order\_date` was valid
+- `order_date` was valid
 
-\- `order\_number` did not begin with `T`
+- `order_number` did not begin with `T`
 
 
 
@@ -110,11 +110,11 @@ No duplicated order numbers were found in the cleaned dataset.
 
 
 
-The meanings of `record\_status = 1` and order numbers beginning with `T` should be confirmed with the company before the results are used for formal performance evaluation.
+The meanings of `record_status = 1` and order numbers beginning with `T` should be confirmed with the company before the results are used for formal performance evaluation.
 
 
 
-\## Methods
+## Methods
 
 
 
@@ -122,29 +122,29 @@ The analysis included:
 
 
 
-\- Annual company order value
+- Annual company order value
 
-\- Annual company order count
+- Annual company order count
 
-\- Annual average order value
+- Annual average order value
 
-\- Employee order value by year
+- Employee order value by year
 
-\- Employee order count
+- Employee order count
 
-\- Employee average order value
+- Employee average order value
 
-\- January–June same-period comparisons
+- January–June same-period comparisons
 
-\- Employee share of company order value
+- Employee share of company order value
 
-\- Dependence on the largest one and three orders
+- Dependence on the largest one and three orders
 
-\- Monthly order-value distribution
+- Monthly order-value distribution
 
-\- Customer concentration
+- Customer concentration
 
-\- Business-division comparison
+- Business-division comparison
 
 
 
@@ -156,11 +156,11 @@ The company’s 2020 result was set equal to 100 for long-term index comparisons
 
 
 
-\## Key Findings
+## Key Findings
 
 
 
-\### 1. Company performance declined sharply in 2024 and partially recovered in 2025
+### 1. Company performance declined sharply in 2024 and partially recovered in 2025
 
 
 
@@ -168,17 +168,17 @@ Using 2020 as the baseline of 100, the total order-value index was:
 
 
 
-\- 2020: 100.0
+- 2020: 100.0
 
-\- 2021: 102.3
+- 2021: 102.3
 
-\- 2022: 122.8
+- 2022: 122.8
 
-\- 2023: 101.9
+- 2023: 101.9
 
-\- 2024: 49.3
+- 2024: 49.3
 
-\- 2025: 68.8
+- 2025: 68.8
 
 
 
@@ -186,7 +186,7 @@ The highest indexed performance occurred in 2022. Order value declined sharply i
 
 
 
-\### 2. The decline was influenced more by average order size than by order count
+### 2. The decline was influenced more by average order size than by order count
 
 
 
@@ -202,7 +202,7 @@ In 2025, the order-count index recovered to 92.3, while the average-order-value 
 
 
 
-\### 3. The first half of 2026 outperformed the same period in 2025
+### 3. The first half of 2026 outperformed the same period in 2025
 
 
 
@@ -214,7 +214,7 @@ Because 2026 contains only six months of data, it was compared with the same Jan
 
 
 
-\### 4. Employees showed different sales-performance patterns
+### 4. Employees showed different sales-performance patterns
 
 
 
@@ -230,7 +230,7 @@ This shows that total order value alone does not fully explain employee performa
 
 
 
-\### 5. Dependence on large orders varied substantially
+### 5. Dependence on large orders varied substantially
 
 
 
@@ -246,7 +246,7 @@ This indicates that some employees generated stable results across many orders, 
 
 
 
-\### 6. Customer concentration remained significant
+### 6. Customer concentration remained significant
 
 
 
@@ -254,13 +254,13 @@ During the first half of 2026:
 
 
 
-\- The largest customer represented 29.4% of total order value.
+- The largest customer represented 29.4% of total order value.
 
-\- The top three customers represented 49.4%.
+- The top three customers represented 49.4%.
 
-\- The top five customers represented 65.1%.
+- The top five customers represented 65.1%.
 
-\- The top ten customers represented 86.7%.
+- The top ten customers represented 86.7%.
 
 
 
@@ -268,7 +268,7 @@ The company therefore remained meaningfully dependent on a limited number of maj
 
 
 
-\### 7. The customer base became somewhat broader
+### 7. The customer base became somewhat broader
 
 
 
@@ -276,11 +276,11 @@ The number of customers during the January–June period increased from:
 
 
 
-\- 32 customers in 2024
+- 32 customers in 2024
 
-\- 37 customers in 2025
+- 37 customers in 2025
 
-\- 44 customers in 2026
+- 44 customers in 2026
 
 
 
@@ -292,7 +292,7 @@ This suggests that the customer base became somewhat more diversified, although 
 
 
 
-\### 8. No consistent monthly seasonal pattern was found
+### 8. No consistent monthly seasonal pattern was found
 
 
 
@@ -300,11 +300,11 @@ The month with the highest share of first-half order value differed each year:
 
 
 
-\- 2024: April
+- 2024: April
 
-\- 2025: June
+- 2025: June
 
-\- 2026: March
+- 2026: March
 
 
 
@@ -316,7 +316,7 @@ A small number of large orders may have strongly affected the monthly results.
 
 
 
-\### 9. Business-division comparisons require caution
+### 9. Business-division comparisons require caution
 
 
 
@@ -328,99 +328,99 @@ However, business-division names appear to have changed over time. Long-term div
 
 
 
-\## Visualizations
+## Visualizations
 
 
 
-\### Employee Share of Company Order Value
+### Employee Share of Company Order Value
 
 
 
-!\[Employee Order Share](../charts/employee\_order\_share.png)
+![Employee Order Share](../charts/employee_order_share.png)
 
 
 
-\### Annual Company Order Value Index
+### Annual Company Order Value Index
 
 
 
-!\[Annual Company Order Index](../charts/annual\_company\_order\_index.png)
+![Annual Company Order Index](../charts/annual_company_order_index.png)
 
 
 
-\### Annual Company Order Count Index
+### Annual Company Order Count Index
 
 
 
-!\[Annual Order Count Index](../charts/annual\_company\_order\_count\_index.png)
+![Annual Order Count Index](../charts/annual_company_order_count_index.png)
 
 
 
-\### Annual Average Order Value Index
+### Annual Average Order Value Index
 
 
 
-!\[Annual Average Order Value Index](../charts/annual\_average\_order\_value\_index.png)
+![Annual Average Order Value Index](../charts/annual_average_order_value_index.png)
 
 
 
-\### Company Order Performance Indices
+### Company Order Performance Indices
 
 
 
-!\[Company Order Performance Indices](../charts/company\_order\_performance\_indices.png)
+![Company Order Performance Indices](../charts/company_order_performance_indices.png)
 
 
 
-\### Employee Order Frequency and Average Order Value
+### Employee Order Frequency and Average Order Value
 
 
 
-!\[Employee Order Frequency](../charts/employee\_order\_frequency\_vs\_value\_index.png)
+![Employee Order Frequency](../charts/employee_order_frequency_vs_value_index.png)
 
 
 
-\### Employee Dependence on Large Orders
+### Employee Dependence on Large Orders
 
 
 
-!\[Employee Large Order Concentration](../charts/employee\_large\_order\_concentration.png)
+![Employee Large Order Concentration](../charts/employee_large_order_concentration.png)
 
 
 
-\### Monthly Order-Value Distribution
+### Monthly Order-Value Distribution
 
 
 
-!\[Monthly Order Distribution](../charts/monthly\_order\_value\_distribution.png)
+![Monthly Order Distribution](../charts/monthly_order_value_distribution.png)
 
 
 
-\### Top Customer Order Share
+### Top Customer Order Share
 
 
 
-!\[Top Customer Order Share](../charts/top\_customer\_order\_share.png)
+![Top Customer Order Share](../charts/top_customer_order_share.png)
 
 
 
-\### Customer Concentration Trend
+### Customer Concentration Trend
 
 
 
-!\[Customer Concentration Trend](../charts/customer\_concentration\_trend.png)
+![Customer Concentration Trend](../charts/customer_concentration_trend.png)
 
 
 
-\### Business-Division Order Share
+### Business-Division Order Share
 
 
 
-!\[Business Division Order Share](../charts/business\_division\_order\_share.png)
+![Business Division Order Share](../charts/business_division_order_share.png)
 
 
 
-\## Business Implications
+## Business Implications
 
 
 
@@ -428,25 +428,25 @@ The analysis suggests several ways the company could improve internal performanc
 
 
 
-1\. Evaluate employees using multiple measures instead of total order value alone.
+1. Evaluate employees using multiple measures instead of total order value alone.
 
-2\. Track order count and average order value separately.
+2. Track order count and average order value separately.
 
-3\. Monitor employee dependence on a few large orders.
+3. Monitor employee dependence on a few large orders.
 
-4\. Monitor concentration among major customers.
+4. Monitor concentration among major customers.
 
-5\. Compare incomplete years only with the same period in previous years.
+5. Compare incomplete years only with the same period in previous years.
 
-6\. Record organizational changes so business-division performance can be compared consistently.
+6. Record organizational changes so business-division performance can be compared consistently.
 
-7\. Combine order data with employee targets to calculate target-achievement rates.
+7. Combine order data with employee targets to calculate target-achievement rates.
 
-8\. Consider profitability data in addition to order value.
+8. Consider profitability data in addition to order value.
 
 
 
-\## Limitations
+## Limitations
 
 
 
@@ -454,27 +454,27 @@ This analysis has several limitations:
 
 
 
-\- It uses order value rather than profit or profit margin.
+- It uses order value rather than profit or profit margin.
 
-\- A high order value does not necessarily mean high profitability.
+- A high order value does not necessarily mean high profitability.
 
-\- Large individual orders can strongly affect monthly and annual results.
+- Large individual orders can strongly affect monthly and annual results.
 
-\- Employee assignments may change during a project.
+- Employee assignments may change during a project.
 
-\- Shared or collaborative sales efforts are not identified.
+- Shared or collaborative sales efforts are not identified.
 
-\- Cancelled or modified orders may require additional company rules.
+- Cancelled or modified orders may require additional company rules.
 
-\- Business-division names appear to have changed over time.
+- Business-division names appear to have changed over time.
 
-\- 2026 data includes only January through June.
+- 2026 data includes only January through June.
 
-\- The analysis identifies patterns, not causes.
+- The analysis identifies patterns, not causes.
 
 
 
-\## Privacy and Ethics
+## Privacy and Ethics
 
 
 
@@ -486,19 +486,19 @@ The following materials will not be uploaded to a public repository:
 
 
 
-\- Original ERP data
+- Original ERP data
 
-\- Employee names
+- Employee names
 
-\- Customer names
+- Customer names
 
-\- Product details
+- Product details
 
-\- Actual financial amounts
+- Actual financial amounts
 
-\- Internal SQL files
+- Internal SQL files
 
-\- Internal Excel dashboards
+- Internal Excel dashboards
 
 
 
@@ -506,19 +506,19 @@ Public materials use:
 
 
 
-\- Employee labels such as `Employee A`
+- Employee labels such as `Employee A`
 
-\- Customer labels such as `Customer A`
+- Customer labels such as `Customer A`
 
-\- Business-division labels such as `Division A`
+- Business-division labels such as `Division A`
 
-\- Percentage shares
+- Percentage shares
 
-\- Indexed financial values
+- Indexed financial values
 
 
 
-\## Reflection
+## Reflection
 
 
 
@@ -535,4 +535,3 @@ I also learned that relying on a single performance measure can be misleading. T
 
 
 The project strengthened my interest in data science because it required both technical analysis and careful interpretation of a real business problem.
-
