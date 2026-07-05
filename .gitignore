@@ -7,6 +7,12 @@ private_output/
 # Private notebooks containing real names and financial values
 notebooks/01_data_cleaning_and_exploration.ipynb
 notebooks/02_sales_performance_analysis.ipynb
+notebooks/05_final_data_preparation.ipynb
+
+# Private mapping and cleaned files
+clean_orders_private.csv
+customer_mapping_private.csv
+employee_mapping_private.csv
 
 # Internal file formats
 *.xls

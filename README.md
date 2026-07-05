@@ -1,418 +1,195 @@
-# Sales Performance Analysis for an Industrial Automation Company
+# Industrial Automation Sales Analysis
 
-## Overview
+## Project Overview
 
-This project analyzes ERP order records from an industrial automation company to examine company-wide order trends, employee performance patterns, customer concentration, monthly order distribution, and dependence on large orders.
+This project analyzes anonymized ERP order data from an industrial automation company between January 2024 and June 2026.
 
-The initial business request was to create annual employee order-performance graphs. I expanded that request into a broader data analysis project using Python, pandas, matplotlib, and Excel.
+The goal was to build a reproducible workflow that:
 
-Because the original dataset contains confidential business information, all public materials use anonymized labels, percentage shares, and indexed values instead of employee names, customer names, and actual financial amounts.
+- cleans raw order records,
+- distinguishes domestic and overseas orders,
+- converts overseas order values into KRW,
+- identifies the highest-value customers,
+- compares employee performance across years,
+- and presents the results through clear visualizations.
+
+All company names, customer names, employee names, and monetary amounts were removed or transformed before publication.
 
 ---
 
-## Research Questions
+## Business Questions
 
-1. How did the company’s order performance change across years?
-
-2. How did employees differ in total order value, order count, and average order value?
-
-3. Were employee results distributed across many orders or concentrated in a few large orders?
-
-4. How concentrated was company order value among major customers?
-
-5. Did monthly order patterns show a consistent seasonal pattern?
-
-6. How did the first half of 2026 compare with the same period in 2024 and 2025?
+1. Which customers generated the highest order value?
+2. How did the top customers' order activity change over time?
+3. How much of each top customer's activity came from domestic or overseas orders?
+4. How did employee order performance vary by year?
+5. How did the domestic and overseas sales mix change from 2024 to 2026 YTD?
 
 ---
 
 ## Dataset
 
-The original dataset contained **2,511 ERP order records** covering January 2010 through June 2026.
+The private ERP source contained 2,511 historical rows.
 
-The main variables included:
+After limiting the analysis to January 2024 through June 2026, keeping formal A/B orders, excluding T-type orders, and removing invalid records, the final private analytical dataset contained:
 
-- Order date
+- 569 formal order records
+- 468 domestic orders
+- 101 overseas orders
+- 88 standardized customers
+- 10 employees
 
-- Order number
-
-- Employee
-
-- Customer
-
-- Product and product specification
-
-- Quantity
-
-- Order amount
-
-- Sales type
-
-- Business division
-
-- Expected delivery date
-
-- Completed delivery date
-
-- Record status
-
-After data cleaning, **1,933 records** remained for analysis.
-
-The original company dataset is not included in this repository because it contains confidential employee, customer, product, and financial information.
+The public repository contains only anonymized and indexed summary data.
 
 ---
 
-## Data Cleaning
+## Data Processing Rules
 
-The original ERP column names were renamed to clearer English names.
+- Domestic orders: `Amt`
+- Overseas orders: `Amt × Mny`
+- `wAmt`: used as a validation reference
+- Formal orders: A and B
+- Excluded orders: T
+- Employee field: `PostName`
+- Historical departments were standardized before analysis
+- Customer names were cleaned and standardized before ranking
 
-Dates stored in ERP formats such as `20260520` were converted into standard date values. Quantity and order-amount columns were converted into numeric variables.
+Actual monetary values were replaced with relative index values.
 
-Records were retained only when:
+For example:
 
-- `record_status` was 0
-
-- `order_amount` was greater than 0
-
-- `order_date` was valid
-
-- `order_number` did not begin with `T`
-
-No duplicated order numbers were found in the cleaned dataset.
-
-The meanings of `record_status = 1` and order numbers beginning with `T` should be confirmed with the company before the results are used for formal employee-performance evaluation.
-
----
-
-## Methods
-
-The analysis included:
-
-- Annual company order value
-
-- Annual company order count
-
-- Annual average order value
-
-- Employee order value by year
-
-- Employee order count
-
-- Employee average order value
-
-- January–June same-period comparisons
-
-- Employee share of company order value
-
-- Employee dependence on the largest one and three orders
-
-- Monthly order-value distribution
-
-- Customer concentration
-
-- Business-division comparison
-
-For public visualizations, actual financial values were replaced with percentage shares or index values.
-
-For long-term company comparisons, the 2020 result was set equal to an index value of 100.
+- the largest customer total is indexed to `100`,
+- other customers are shown relative to that value,
+- and monthly values are indexed to the largest customer-month value.
 
 ---
 
 ## Key Findings
 
-### 1. Company performance declined sharply in 2024 and partially recovered in 2025
+### 1. Customer concentration
 
-Using 2020 as the baseline of 100, the total order-value index was:
+The five highest-value customers had total value indices of:
 
-- 2020: 100.0
+| Rank | Customer | Order Value Index |
+|---:|---|---:|
+| 1 | Customer_01 | 100.0 |
+| 2 | Customer_02 | 89.0 |
+| 3 | Customer_03 | 79.6 |
+| 4 | Customer_04 | 75.7 |
+| 5 | Customer_05 | 73.6 |
 
-- 2021: 102.3
+This indicates that several major customers contributed at relatively similar levels rather than one customer dominating the entire ranking.
 
-- 2022: 122.8
+### 2. Domestic and overseas customer mix
 
-- 2023: 101.9
+- Customer_01, Customer_02, and Customer_04 were entirely domestic.
+- Customer_03 was entirely overseas.
+- Customer_05 was primarily overseas, with approximately 86.5% of its value from overseas orders.
 
-- 2024: 49.3
+### 3. Monthly order volatility
 
-- 2025: 68.8
+The monthly trend shows that major customers often generated value through a small number of large order months rather than through evenly distributed monthly activity.
 
-The company recorded its highest indexed order value in 2022. Order value declined sharply in 2024 and partially recovered in 2025.
+### 4. Employee performance
 
-### 2. The decline was influenced more by average order size than by order count
+Employee_01 recorded the highest indexed annual result in 2025 and the highest January-June indexed result in 2026.
 
-In 2024, the order-count index was 83.2, while the average-order-value index was 59.3.
+Because 2026 contains only January through June, the project includes both:
 
-This suggests that the decline in total order value was not caused only by fewer orders. The decrease in average order size had a larger effect.
+- an annual/YTD comparison, and
+- a fair January-June same-period comparison.
 
-In 2025, the order-count index recovered to 92.3, while the average-order-value index recovered to 74.5.
+### 5. Domestic and overseas mix by year
 
-### 3. The first half of 2026 outperformed the same period in 2025
+Overseas share of total indexed order value:
 
-The company’s order value from January through June 2026 was **16.6% higher** than during the same period in 2025.
+- 2024: 14.7%
+- 2025: 25.1%
+- 2026 YTD: 9.1%
 
-Because 2026 contains only six months of data, it was compared with the same January–June period in earlier years rather than with complete annual results.
-
-### 4. Employees showed different performance patterns
-
-Some employees generated performance through many orders with moderate average values, while other employees handled fewer but much larger orders.
-
-One anonymized employee accounted for **53.5%** of company order value during the first half of 2026.
-
-This shows that total order value alone does not fully describe employee performance. Order count, average order value, and dependence on large orders should also be considered.
-
-### 5. Dependence on large orders varied substantially by employee
-
-For the employee with the most diversified performance, the largest three orders represented only **18.9%** of total order value.
-
-For several other employees, the largest three orders represented approximately **80% or more** of their total order value.
-
-Some employee results were therefore distributed across many orders, while others depended heavily on a small number of large contracts.
-
-### 6. Customer concentration remained significant
-
-During the first half of 2026:
-
-- The largest customer represented 29.4% of total order value.
-
-- The top three customers represented 49.4%.
-
-- The top five customers represented 65.1%.
-
-- The top ten customers represented 86.7%.
-
-The company therefore remained meaningfully dependent on a limited number of major customers.
-
-### 7. The customer base became somewhat broader
-
-The number of customers during the January–June period increased from:
-
-- 32 customers in 2024
-
-- 37 customers in 2025
-
-- 44 customers in 2026
-
-The top-three customer concentration decreased slightly from 52.3% in 2024 to 49.4% in 2026.
-
-This suggests that the company’s customer base became somewhat more diversified, although major customers still represented a large portion of total order value.
-
-### 8. No consistent monthly seasonal pattern was identified
-
-The month with the highest share of first-half order value differed by year:
-
-- 2024: April
-
-- 2025: June
-
-- 2026: March
-
-Because the peak month changed each year, the data did not show a stable seasonal pattern across the three periods.
-
-A small number of large orders may have strongly influenced the monthly results.
-
-### 9. Business-division comparisons require caution
-
-A comparison of 2025 and 2026 showed changes in the shares of current business divisions.
-
-However, business-division names appear to have changed over time. Long-term comparisons should not be made until the company confirms whether the older and newer division names represent organizational restructuring or separate departments.
+The overseas share increased in 2025 before declining in the first half of 2026.
 
 ---
 
-## Main Visualizations
+## Visualizations
 
-### Company Order Performance Indices
+### Top 5 Customers by Order Value Index
 
-![Company Order Performance Indices](charts/company_order_performance_indices.png)
+![Top 5 customers](charts/final/01_top5_customer_value_index.png)
 
-This chart compares total order value, order count, and average order value using 2020 as the baseline of 100.
+### Domestic and Overseas Share of Top 5 Customers
 
-### Employee Share of Company Order Value
+![Customer market mix](charts/final/02_top5_customer_market_mix.png)
 
-![Employee Order Share](charts/employee_order_share.png)
+### Monthly Order Value Index for Top 5 Customers
 
-This chart shows the percentage of company order value generated by each anonymized employee during the same January–June period.
+![Monthly customer trend](charts/final/03_top5_customer_monthly_trend.png)
 
-### Employee Order Frequency vs. Average Order Value
+### Employee Order Value Index by Year
 
-![Employee Order Frequency](charts/employee_order_frequency_vs_value_index.png)
+![Employee yearly performance](charts/final/04_employee_yearly_order_value_index.png)
 
-This chart distinguishes employees who handled many moderate-sized orders from employees who handled fewer but larger orders.
+### Employee January-June Comparison
 
-### Employee Dependence on Large Orders
+![Employee same-period comparison](charts/final/05_employee_same_period_comparison.png)
 
-![Employee Large Order Concentration](charts/employee_large_order_concentration.png)
+### Domestic and Overseas Order Value Share by Year
 
-This chart measures how much of each employee’s performance came from their largest one and three orders.
-
-### Customer Concentration Trend
-
-![Customer Concentration Trend](charts/customer_concentration_trend.png)
-
-This chart compares the shares of company order value generated by the largest one, three, and five customers.
-
-### Monthly Order-Value Distribution
-
-![Monthly Order Distribution](charts/monthly_order_value_distribution.png)
-
-This chart shows how each year’s first-half order value was distributed across January through June.
-
-### Business-Division Order Share
-
-![Business Division Order Share](charts/business_division_order_share.png)
-
-This chart compares the shares of company order value generated by anonymized business divisions during the same period in 2025 and 2026.
+![Market share by year](charts/final/06_market_share_by_year.png)
 
 ---
 
-## Business Implications
-
-The analysis suggests several ways the company could improve internal performance monitoring:
-
-1. Evaluate employees using multiple measures instead of total order value alone.
-
-2. Track order count and average order value separately.
-
-3. Monitor employee dependence on a small number of large orders.
-
-4. Monitor concentration among major customers.
-
-5. Compare incomplete years only with the same period in previous years.
-
-6. Record organizational changes so business-division performance can be compared consistently.
-
-7. Combine order records with employee targets to calculate target-achievement rates.
-
-8. Include profit or profit-margin data in future analyses.
-
----
-
-## Limitations
-
-This analysis has several limitations:
-
-- It uses order value rather than profit or profit margin.
-
-- A high order value does not necessarily indicate high profitability.
-
-- Individual large orders can strongly affect monthly and annual results.
-
-- Employee assignments may change during a project.
-
-- Shared or collaborative sales efforts are not identified.
-
-- Cancelled or modified orders may require additional company rules.
-
-- Business-division names appear to have changed over time.
-
-- 2026 data includes only January through June.
-
-- The analysis identifies patterns and associations, not causes.
-
----
-
-## Privacy and Ethics
-
-The original ERP data contains confidential company, employee, customer, product, and financial information.
-
-The following materials are not included in the public repository:
-
-- Original ERP data
-
-- Cleaned data containing real identities
-
-- Employee names
-
-- Customer names
-
-- Detailed product information
-
-- Actual financial amounts
-
-- Internal SQL files
-
-- Internal Excel dashboards
-
-Public materials use:
-
-- Employee labels such as `Employee A`
-
-- Customer labels such as `Customer A`
-
-- Business-division labels such as `Division A`
-
-- Percentage shares
-
-- Indexed financial values
-
----
-
-## Project Structure
+## Repository Structure
 
 ```text
-industrial-automation-sales-analysis
-├── README.md
-├── data
-│   └── public
-│       ├── business_division_order_share.csv
-│       ├── company_performance_indices.csv
-│       ├── customer_concentration.csv
-│       ├── employee_large_order_concentration.csv
-│       ├── employee_order_share.csv
-│       └── monthly_order_distribution.csv
-├── notebooks
-│   └── 03_public_analysis.ipynb
-├── charts
-│   ├── annual_average_order_value_index.png
-│   ├── annual_company_order_count_index.png
-│   ├── annual_company_order_index.png
-│   ├── business_division_order_share.png
-│   ├── company_order_performance_indices.png
-│   ├── customer_concentration_trend.png
-│   ├── employee_large_order_concentration.png
-│   ├── employee_order_frequency_vs_value_index.png
-│   ├── employee_order_share.png
-│   ├── monthly_order_value_distribution.png
-│   └── top_customer_order_share.png
-└── report
-    └── final_report.md
+industrial-automation-sales-analysis/
+├── charts/
+│   └── final/
+├── data/
+│   └── public/
+├── notebooks/
+│   └── 06_public_analysis.ipynb
+├── report/
+│   ├── final_report.md
+│   └── public_findings.csv
+├── .gitignore
+└── README.md
 ```
-
-Confidential source data, internal analysis notebooks, SQL files, and Excel dashboards are excluded from this public repository.
 
 ---
 
 ## Tools Used
 
 - Python
-
 - pandas
-
 - NumPy
-
-- matplotlib
-
+- Matplotlib
 - Google Colab
-
-- Microsoft Excel
-
-- Markdown
+- Excel
+- GitHub
 
 ---
 
-## Full Report
+## Privacy and Publication
 
-Read the complete project report here:
+The original ERP file and private cleaned data are not included in this repository.
 
-[Final Report](report/final_report.md)
+The public files contain only anonymized customer IDs, anonymized employee IDs, index values, percentages, and aggregated results.
+
+No raw company data should be uploaded to GitHub.
 
 ---
 
-## Reflection
+## Limitations
 
-This project taught me that analyzing real business data requires more than producing graphs.
+- 2026 data covers only January through June.
+- Indexed values show relative performance, not actual currency amounts.
+- Large individual orders can create sharp monthly spikes.
+- The analysis measures order value, not profitability, margin, or realized revenue.
+- Employee results reflect order attribution in the ERP system and should not be interpreted as a complete measure of individual performance.
 
-I had to understand unfamiliar ERP variables, define defensible data-cleaning rules, compare partial-year data fairly, recognize misleading percentage changes, and protect confidential information.
+---
 
-I also learned that relying on a single performance measure can be misleading. Total order value, order count, average order size, dependence on large contracts, and customer concentration each reveal different parts of business performance.
+## Author
 
-The project strengthened my interest in data science because it required both technical analysis and careful interpretation of a real business problem.
+JD Shin
