@@ -14,13 +14,19 @@ clean_orders_private.csv
 customer_mapping_private.csv
 employee_mapping_private.csv
 
-# Internal file formats
+# Internal analysis output files
 *.xls
 *.xlsx
 *.sql
+*_최종검수.xlsx
+*_수정본.xlsx
+*_분석초안.xlsx
 
-# Temporary files
+# Python / notebook temporary files
 .ipynb_checkpoints/
 __pycache__/
+*.pyc
+
+# OS files
 .DS_Store
 Thumbs.db
