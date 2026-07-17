@@ -1,0 +1,11 @@
+﻿employee_id,total_order_count,actual_cost_order_count,actual_material_margin_rate_pct,actual_cost_coverage_pct
+Employee_03,217,126,52.61,58.06
+Employee_05,62,55,48.34,88.71
+Employee_04,70,59,71.17,84.29
+Employee_08,71,39,67.62,54.93
+Employee_07,62,40,50.05,64.52
+Employee_09,19,17,51.66,89.47
+Employee_06,53,45,24.41,84.91
+Employee_01,13,6,72.07,46.15
+Employee_10,1,1,95.19,100.0
+Employee_02,1,0,,0.0

@@ -1,0 +1,5 @@
+﻿department_id,total_order_count,actual_cost_order_count,actual_material_margin_rate_pct,actual_cost_coverage_pct
+Department_04,300,170,54.62,56.67
+Department_03,162,134,57.14,82.72
+Department_02,106,84,45.22,79.25
+Department_01,1,0,,0.0
