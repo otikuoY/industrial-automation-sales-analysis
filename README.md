@@ -48,6 +48,22 @@ A more detailed explanation of the project is available here:
 
 [Final Report](docs/final_report.md)
 
+## Public Outputs
+
+This repository includes anonymized public outputs created from confidential ERP-based sales, revenue, and material-cost data. Raw company data and internal Excel files are excluded from this repository.
+
+### Public Charts
+
+- [Project Profitability Quadrant](charts/public/project_profitability_quadrant.png)
+- [Employee-Level Material Margin Rate](charts/public/employee_material_margin_rate.png)
+- [Top Customers by Material Profitability Index](charts/public/top_customers_material_profitability_index.png)
+- [Department-Level Material Margin Rate](charts/public/department_material_margin_rate.png)
+- [Material Cost Share by Category](charts/public/material_cost_index_by_category.png)
+
+### Public Data
+
+Anonymized CSV summaries are available in [`data/public`](data/public).
+
 ## Data Privacy
 
 The original ERP data contains confidential company information, including customer names, employee names, order amounts, revenue records, and cost data.
